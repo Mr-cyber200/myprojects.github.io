@@ -1,0 +1,233 @@
+#This code prompts the user to make a choice from a list of options. Depending on the choice, it will take different actions.
+#For example, if the user chooses 1 for accreditation, the code will prompt the user to enter their voter's card number and verify it against a list in the database.
+# If the user chooses 2 for casting vote, it will list the available political parties and allow the user to select one and keep track of the number of votes in a text file.
+#If the user chooses 3 for uploading results, it will capture an image from the camera and upload it to the specified url.
+# Lastly, if the user chooses 4 for viewing results, it will open the web browser and redirect the user to the result page.
+
+
+
+
+print("************************************************************************\ ") 
+print("@@@@@@@@@@@@@@@@@@@@ copyright of Mr_Cyber 2023 @@@@@@@@@@@@@@@@@@@@@@@@/") 
+print("************************************************************************\ ") 
+print("************************************************************************/") 
+print(" _         _    ___         ______           ______     ______    ___")
+print("| \       / | |     \     /         \     / |       \  |        |      \ ")
+print("|  \     /  | |  D   )   /           \   /  |   D    | |        |   O   )")
+print("|   \ _ /   | |     /   /             \ /   | _____ /  |______  |      /")
+print("|     O     | |    / __ \              |    |       \  |        |     /")
+print("|    ___    | |  _ \     \             |    |   D    | |        |  __ \ ")
+print("| _ |   | _ | |_| |_\     \ ______     |    | ______ / |______  |_|  |_\ ")
+print("************************************************************************")
+print("@@@@@@@@@@@@@ github link = https://github.com/Mr-cyber200 @@@@@@@@@@@@@") 
+print("LinkendIn link = https://www.linkedin.com/in/nwarienne-michael-378b5a183") 
+print("************************************************************************") 
+
+print("Wecome to my voting app")
+print("\n")
+
+
+#This code prompts the user to make a choice depending on the action they want to take.
+user_action = int(input("""What do you want to do?
+                        1. accreditation
+                        2. cast vote
+                        3. Upload Result
+                        4. View Result: \n"""))
+print("You have selected: ", user_action,)
+
+#The code provides the user with different options according to the user input.
+choice_name = ""
+if user_action == 1:
+    choice_name = "accreditation"
+elif user_action == 2:
+    choice_name = "cast vote"
+elif user_action == 3:
+    choice_name = "Upload Result"
+elif user_action == 4:
+    choice_name = "View Result"
+elif user_action >=4:
+    choice_name = "You have selected wrong option. Please select option from above to continue"
+
+# This code ensures that the user's choice is confirmed before proceeding.
+answer = "" 
+while answer not in ["Yes", "yes", "Y", "y", "No", "no", "N", "n"]: 
+    answer = input("Confirm your choice of action, [Yes or No\n]: ") 
+    if answer=="Yes" or answer=="yes" or answer=="Y" or answer=="y": 
+        print("Welcome:\n", choice_name.upper()) 
+    elif answer=="No" or answer=="no" or answer=="N" or answer=="n": 
+        print("Re-input your choice\n")
+type(user_action)
+
+
+#This code verifies the voter's card number against the list in the database and adds it to the verified list if it is valid.
+if user_action == 1:
+    voter_card_number = input("Please enter your voter's card number: ")
+    database = ["123456789", "987654321", "456789123"]
+    verified_list = []
+    if voter_card_number in database:
+        verified_list.append(voter_card_number)
+        print("Verified")
+    elif voter_card_number in verified_list:
+        print("You have been verified before")
+    else:
+        print("Invalid voter's card number")
+
+
+#This code allows the user to select a political party and vote for it, while also keeping track of the number of votes in a text file.
+if user_action == 2:
+    print("Choose the political party you want to vote for: \n1. Action Democratic Party (ADP)\n2. African Democratic Congress (ADC)\n3. African Democratic Party (ADP)\n4. All Grassroots Alliance (AGA)\n5. All Progressives Congress (APC)\n6. All Progressives Grand Alliance (APGA)\n7. Democratic People's Party (DPP)\n8. Labour Party (LP)\n9. Peoples Democratic Party (PDP)\n10. Progressive Peoples Alliance (PPA)\n11. Young Progressives Party (YPP)")
+    party_choice = int(input("Enter the number of the political party you want to vote for: "))
+    if party_choice == 1:
+        with open('ADP_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write("1")
+                print("You have voted for Action Democratic Party (ADP)")        
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 2:
+        with open('ADC_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for African Democratic Congress (ADC)") 
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 3:
+        with open('ADP_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for African Democratic Party (ADP)")
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 4:
+        with open('AGA_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for All Grassroots Alliance (AGA)") 
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 5:
+        with open('APC_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for All Progressives Congress (APC)")
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 6:
+        with open('APGA_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for All Progressives Grand Alliance (APGA)")
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+            print("Thank you!!!")
+
+    elif party_choice == 7:
+        with open('DPP_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for Democratic People's Party (DPP)") 
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 8:
+        with open('LP_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for Labour Party (LP)")
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 9:
+        with open('PDP_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for Peoples Democratic Party (PDP)")
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")  
+
+    elif party_choice == 10:
+        with open('PPA_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for Progressive Peoples Alliance (PPA)")
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+
+    elif party_choice == 11:
+        with open('YPP_list.txt', 'a+') as f:
+            last_value = f.readlines()
+            if last_value == []:
+                f.write('1')
+                print("You have voted for Young Progressives Party (YPP)")
+            else:
+                last_value = int(last_value[-1])
+                f.write(str(last_value + 1))
+        print("Thank you!!!")
+    else:
+        print("Invalid Vote")
+
+
+
+# This code captures an image from the camera and uploads it to the specified url.
+if user_action == 3: 
+    import cv2
+    import requests
+    camera = cv2.VideoCapture(0)
+    return_value, image = camera.read()
+    cv2.imwrite('result.jpg', image)
+    del(camera)
+    img = cv2.imread('result.jpg')
+    cv2.imshow('Captured Image', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    url = 'https://github.com/Mr-cyber200/python-scrip'
+    files = {'file': open('result.jpg', 'rb')}
+    r = requests.post(url, files=files)
+    print(r.text)
+    print("Image captured and uploaded to portal")
+
+
+#This code opens the web browser and redirects the user to the result page
+if user_action == 4:
+    import webbrowser
+    print("Redirecting you to the result page...")
+    webbrowser.open("https://www.inecelectionresults.ng/elections/types") 
+
+#This statement ensures that the user's input is limited to the given choices
+elif user_action not in [1,2,3,4]:
+    quit()
+    
